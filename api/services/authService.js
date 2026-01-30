@@ -1,6 +1,6 @@
 const database = require('../models')
 const { compare } = require('bcryptjs')
-const { sing } = require('jsonwebtoken')
+const { sign } = require('jsonwebtoken')
 const jsonSecret = require('../config/jsonSecret')
 
 class AuthService {
@@ -22,7 +22,7 @@ class AuthService {
       throw new Error('Usuário ou senha inválidos')
     }
 
-    const accessToken = sing(
+    const accessToken = sign(
       {
         id: usuario.id,
         email: usuario.email,
