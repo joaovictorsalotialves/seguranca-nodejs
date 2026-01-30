@@ -2,8 +2,9 @@ const UsuarioService = require('../services/usuarioService')
 
 const usuarioService = new UsuarioService()
 
+// biome-ignore lint/complexity/noStaticOnlyClass: Class used as controller
 class UsuarioController {
-  async cadastrar(req, res) {
+  static async cadastrar(req, res) {
     const { nome, email, senha } = req.body
 
     try {
