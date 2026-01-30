@@ -10,9 +10,9 @@ class AuthController {
     try {
       const login = await authService.login({ email, senha })
 
-      return res.status(200).send(login)
+      res.status(200).send(login)
     } catch (error) {
-      return res.status(401).send({ message: error.message })
+      res.status(401).send({ message: error.message })
     }
   }
 }
