@@ -5,5 +5,5 @@ const usuario = require('./usuariosRoute')
 const auth = require('./authRoute')
 
 module.exports = app => {
-  app.use(bodyParser.json(), produto, usuario, auth)
+  app.use(bodyParser.json(), auth, produto, usuario)
 }
