@@ -74,7 +74,8 @@ class RoleService {
       throw new Error('Role informada não cadastrada!')
     }
     try {
-      ;(role.nome = dto.nome), (role.descricao = dto.descricao)
+      role.nome = dto.nome
+      role.descricao = dto.descricao
       await role.save()
       return await role.reload()
     } catch (error) {
