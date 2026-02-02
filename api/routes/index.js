@@ -8,5 +8,5 @@ const permissao = require('./permissao')
 const seguranca = require('./seguranca')
 
 module.exports = app => {
-  app.use(bodyParser.json(), auth, produto, usuario, role, permissao, seguranca)
+  app.use(bodyParser.json(), auth, usuario, produto, role, permissao, seguranca)
 }
