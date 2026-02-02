@@ -1,5 +1,4 @@
 const AuthService = require('../services/authService')
-
 const authService = new AuthService()
 
 // biome-ignore lint/complexity/noStaticOnlyClass: Class used as controller
