@@ -3,8 +3,8 @@ const segurancaService = new SegurancaService()
 
 // biome-ignore lint/complexity/noStaticOnlyClass: Class used as controller
 class SegurancaController {
-  static async cadastrarAcl() {
-    const { roles, permissoes } = require.body
+  static async cadastrarAcl(req, res) {
+    const { roles, permissoes } = req.body
     const { usuarioId } = req
 
     try {
