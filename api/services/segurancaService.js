@@ -64,6 +64,49 @@ class SegurancaService {
 
     return novoUsuario
   }
+
+  async cadastrarPermissoesRoles(dto) {
+    const role = await database.roles.findOne({
+      include: [
+        {
+          model: database.permissoes,
+          as: 'role_permissao',
+          attributes: ['id', 'nome', 'descricao'],
+        },
+      ],
+    })
+
+    if (!role) {
+      throw new Error('Role não cadastrada')
+    }
+
+    const permissoesCadastradas = await database.permissoes.findAll({
+      where: {
+        id: {
+          [Sequelize.Op.in]: dto.permissoes,
+        },
+      },
+    })
+
+    await role.removeRole_permissao(role.role_permissao)
+
+    await role.addRole_permissao(permissoesCadastradas)
+
+    const novaRole = await database.roles.findOne({
+      include: [
+        {
+          model: database.permissoes,
+          as: 'role_permissao',
+          attributes: ['id', 'nome', 'descricao'],
+        },
+      ],
+      where: {
+        id: dto.roleId,
+      },
+    })
+
+    return novaRole
+  }
 }
 
 module.exports = SegurancaService
